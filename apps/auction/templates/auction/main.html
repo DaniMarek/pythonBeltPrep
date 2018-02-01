@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Success!</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/auction/styles.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+			<h1>{{request.session.msg}} {{user.first_name}} !</h1>
+			<a href="/logout">Logout</a>
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th>Seller</th>
+					<th>Top Bid</th>
+					<th>Time Remaining</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<form action="/new" method="POST">
+						{% csrf_token %}
+					<tr>
+						<td>{{item}}</td>
+						<td>{{seller}}</td>
+						<td>{{price}}<input type="hidden" name="price" value="{{i.id}}"></td>
+						<td>{{timer}}</td>
+						<td><a href="">Delete</a></td>
+					</tr>
+					<button class="btn" type="submit" value="new">New Auction</button>
+					<h3>Your current wallet: {{wallet}}</h3>
+				</form>
+			</tbody>
+		</table>
+		</div>
+	</body>
+</html>

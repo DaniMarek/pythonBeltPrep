@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Success!</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/auction/styles.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+			<h1>{{request.session.msg}} {{user.first_name}} !</h1>
+			<a href="/">Home</a> <a href="/logout">Logout</a>
+			<div class="row">
+				<form class="col-sm-7" action="/login" method="post">
+					{% csrf_token %}
+					<h1>Come Here Often? Login!</h1>
+					<div class='form-group'>
+						<label>Item:</label>
+						<input type="text" class="form-control" name="item">
+					</div>
+					<div class='form-group'>
+						<label>Description:</label>
+						<input type="text" class="form-control" name="description">
+					</div>
+					<div class='form-group'>
+						<label>Starting Bid:</label>
+						<input type="password" class="form-control" name="price">
+					</div>
+					<div class='form-group'>
+						<label>End Date:</label>
+						<input type="date" class="form-control" name="expiration">
+					</div>
+					<div class='form-group'>
+						<button class="btn" type="submit" value="create">Create Auction</button>
+					</div>		
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
