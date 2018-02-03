@@ -16,7 +16,7 @@
 			<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Product</th>
+					<th>Product (click to bid)</th>
 					<th>Seller</th>
 					<th>Top Bid</th>
 					<th>Time Remaining</th>
@@ -26,15 +26,17 @@
 			<tbody>
 				<form action="/new" method="POST">
 						{% csrf_token %}
+						{% for item in item %}
 					<tr>
-						<td>{{item}}</td>
-						<td>{{seller}}</td>
-						<td>{{price}}<input type="hidden" name="price" value="{{i.id}}"></td>
-						<td>{{timer}}</td>
-						<td><a href="">Delete</a></td>
+						<td><h4><a href="/bid/{{item.id}}">{{ item.item }}</a></h4></td>
+						<td><h4>{{ item.user.first_name }} {{ item.user.last_name }}</h4></td>
+						<td><h4>{{ item.price }}</h4></td>
+						<td><h4>{{ item.time_remaining.days }} Days</h4></td>
+						<td><a href="/delete/{{item.id}}">Delete</a></td>
 					</tr>
+						{% endfor %}
 					<button class="btn" type="submit" value="new">New Auction</button>
-					<h3>Your current wallet: {{wallet}}</h3>
+					<h3>Your current wallet: {{user.wallet}}</h3>
 				</form>
 			</tbody>
 		</table>

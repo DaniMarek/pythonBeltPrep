@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Success!</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/auction/styles.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+			<a href="/successlog">Home</a> <a href="/logout">Logout</a>
+			<form action="/newbid/{{item.id}}" method="POST">
+					{% csrf_token %}
+				
+					<h1>{{ item.item }} Created by: {{item.user.first_name}} {{item.user.last_name}}<h1>
+					<h4>{{ item.end_date }}</h4>
+					<h3>Current Highest Bid: {{ item.price }} by {{item.user.first_name}} {{item.user.last_name}}</h3>
+					<div class='form-group'>
+						<label>New Bid:</label>
+						<input type="text" class="form-control" name="bid_item">
+					</div>
+				<button class="btn" type="submit" value="bid">Bid</button>
+			</form>
+		</div>
+	</body>
+</html>

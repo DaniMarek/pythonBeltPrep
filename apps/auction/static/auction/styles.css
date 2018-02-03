@@ -4,14 +4,19 @@
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
-
+p{
+	color: white;
+}
 form{
+	background-color: white;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
-table{
+.table{
 	background-color: white;
 }
 a{
+	background-color: white;
+	padding: 5px;
 	color: #ed710b;
 }
